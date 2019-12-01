@@ -55,14 +55,13 @@ namespace APIOauthDemo
 
                     options.AuthorizationEndpoint = "https://login.microsoftonline.com/a3b51127-f386-45c1-bf32-a4fac324169b/oauth2/v2.0/authorize";
                     options.TokenEndpoint = "https://login.microsoftonline.com/a3b51127-f386-45c1-bf32-a4fac324169b/oauth2/v2.0/token";
-                    options.UserInformationEndpoint = "https://login.microsoftonline.com/common/openid/userinfo";
+                    options.UserInformationEndpoint = "https://graph.microsoft.com/oidc/userinfo";
 
+                    options.SaveTokens = true;
 
-                    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "id");
+                    options.ClaimActions.MapJsonKey(ClaimTypes.NameIdentifier, "sub");
                     options.ClaimActions.MapJsonKey(ClaimTypes.Name, "name");
-                    //options.ClaimActions.MapJsonKey("urn:github:login", "login");
-                    //options.ClaimActions.MapJsonKey("urn:github:url", "html_url");
-                    //options.ClaimActions.MapJsonKey("urn:github:avatar", "avatar_url");
+                    options.ClaimActions.MapJsonKey(ClaimTypes.Email, "email");
 
                     options.Events = new OAuthEvents
                     {
